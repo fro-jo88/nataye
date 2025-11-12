@@ -13,9 +13,9 @@ class AttendanceSessionResource extends JsonResource
             'id' => $this->id,
             'date' => $this->date->format('Y-m-d'),
             'status' => $this->status,
-            'class' => $this->whenLoaded('class', fn() => [
-                'id' => $this->class->id,
-                'name' => $this->class->name,
+            'class' => $this->whenLoaded('classroom', fn() => [
+                'id' => $this->classroom->id,
+                'name' => $this->classroom->name,
             ]),
             'section' => $this->whenLoaded('section', fn() => [
                 'id' => $this->section->id,
