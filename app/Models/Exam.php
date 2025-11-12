@@ -45,7 +45,7 @@ class Exam extends Model
         });
     }
 
-    public function class(): BelongsTo
+    public function classroom(): BelongsTo
     {
         return $this->belongsTo(ClassModel::class, 'class_id');
     }
