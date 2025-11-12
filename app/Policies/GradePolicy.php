@@ -23,7 +23,7 @@ class GradePolicy
         }
 
         if ($user->isParent()) {
-            return $user->parent->students->contains($grade->student_id);
+            return $user->parentProfile->students->contains($grade->student_id);
         }
 
         return false;
