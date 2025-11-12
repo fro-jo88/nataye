@@ -1,0 +1,21 @@
+# Reduce Docker build context size
+.git
+.github
+node_modules
+vendor
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+.env
+.env.*
+Dockerfile*
+.dockerignore
+.idea
+.vscode
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+composer.phar
+coverage
+phpunit.xml.cache
