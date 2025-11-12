@@ -12,6 +12,8 @@ RUN apt-get update \
         libpng-dev \
         libsqlite3-dev \
         libonig-dev \
+        libicu-dev \
+        libxml2-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions commonly needed by Laravel
@@ -25,7 +27,9 @@ RUN docker-php-ext-configure zip \
         pcntl \
         gd \
         zip \
-        mbstring
+        mbstring \
+        intl \
+        xml
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -35,15 +39,16 @@ WORKDIR /app
 
 # Copy composer files and install (faster layer caching)
 COPY composer.json composer.lock* ./
-RUN composer install --no-dev --no-interaction --prefer-dist --no-progress --optimize-autoloader || true
+ENV COMPOSER_ALLOW_SUPERUSER=1
+RUN composer install --no-dev --no-interaction --prefer-dist --no-progress --optimize-autoloader --no-scripts || true
 
 # Copy application code
 COPY . .
 
-# Ensure vendor is fully installed after copy (handles post-autoload scripts)
-RUN composer install --no-dev --no-interaction --prefer-dist --no-progress --optimize-autoloader
+# Ensure vendor is fully installed after copy
+RUN composer install --no-dev --no-interaction --prefer-dist --no-progress --optimize-autoloader --no-scripts
 
-# Optimize Laravel
+# Optimize Laravel (package discovery will occur at runtime when env is fully available)
 RUN php artisan config:clear || true \
  && php artisan route:clear || true \
  && php artisan view:clear || true
