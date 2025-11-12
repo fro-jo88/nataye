@@ -63,4 +63,4 @@ ENV APP_ENV=production \
     DB_DATABASE=/tmp/database.sqlite
 
 # Start script: create sqlite file, run migrations, then serve
-CMD ["sh", "-lc", "touch /tmp/database.sqlite && php artisan migrate --force && php artisan serve --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["sh", "-lc", "rm -f bootstrap/cache/*.php && touch /tmp/database.sqlite && php artisan migrate --force && php artisan serve --host 0.0.0.0 --port ${PORT:-8000}"]
