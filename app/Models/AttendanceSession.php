@@ -24,7 +24,7 @@ class AttendanceSession extends Model
         'date' => 'date',
     ];
 
-    public function class(): BelongsTo
+    public function classroom(): BelongsTo
     {
         return $this->belongsTo(ClassModel::class, 'class_id');
     }
