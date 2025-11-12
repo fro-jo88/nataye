@@ -1,0 +1,24 @@
+{
+    "name": "nataye-nses",
+    "version": "1.0.0",
+    "description": "Nataye Smart Education System",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "watch": "vite build --watch"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.3",
+        "alpinejs": "^3.12.0",
+        "autoprefixer": "^10.4.14",
+        "axios": "^1.4.0",
+        "laravel-vite-plugin": "^0.7.5",
+        "postcss": "^8.4.24",
+        "tailwindcss": "^3.3.2",
+        "vite": "^4.3.9"
+    },
+    "dependencies": {
+        "@heroicons/vue": "^2.0.18"
+    }
+}
