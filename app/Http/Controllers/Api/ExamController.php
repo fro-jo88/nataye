@@ -21,7 +21,7 @@ class ExamController extends Controller
 
     public function index(Request $request): JsonResponse
     {
-        $query = Exam::with(['class', 'section', 'creator']);
+        $query = Exam::with(['classroom', 'section', 'creator']);
 
         if ($request->has('class_id')) {
             $query->where('class_id', $request->class_id);
@@ -59,7 +59,7 @@ class ExamController extends Controller
         return response()->json([
             'status' => 'success',
             'code' => 201,
-            'data' => new ExamResource($exam->load(['class', 'section'])),
+            'data' => new ExamResource($exam->load(['classroom', 'section'])),
             'errors' => []
         ], 201);
     }
@@ -71,7 +71,7 @@ class ExamController extends Controller
         return response()->json([
             'status' => 'success',
             'code' => 200,
-            'data' => new ExamResource($exam->load(['class', 'section', 'questions'])),
+            'data' => new ExamResource($exam->load(['classroom', 'section', 'questions'])),
             'errors' => []
         ]);
     }
