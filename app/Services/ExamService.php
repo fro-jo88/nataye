@@ -134,7 +134,7 @@ class ExamService
             [
                 'student_id' => $attempt->student_id,
                 'exam_id' => $attempt->exam_id,
-                'subject_id' => $attempt->exam->class->subjects()->first()?->id, // Simplified
+                'subject_id' => $attempt->exam->classroom->subjects()->first()?->id, // Simplified
             ],
             [
                 'marks_obtained' => $totalScore,
