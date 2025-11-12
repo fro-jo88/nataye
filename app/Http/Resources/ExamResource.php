@@ -21,9 +21,9 @@ class ExamResource extends JsonResource
             'total_marks' => $this->total_marks,
             'passing_marks' => $this->passing_marks,
             'is_active' => $this->isActive(),
-            'class' => $this->whenLoaded('class', fn() => [
-                'id' => $this->class->id,
-                'name' => $this->class->name,
+            'class' => $this->whenLoaded('classroom', fn() => [
+                'id' => $this->classroom->id,
+                'name' => $this->classroom->name,
             ]),
             'section' => $this->whenLoaded('section', fn() => [
                 'id' => $this->section->id,
