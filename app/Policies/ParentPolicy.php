@@ -15,7 +15,7 @@ class ParentPolicy
     public function view(User $user, ParentModel $parent): bool
     {
         return $user->isAdmin() || 
-               ($user->isParent() && $user->parent->id === $parent->id);
+               ($user->isParent() && $user->parentProfile->id === $parent->id);
     }
 
     public function create(User $user): bool
@@ -26,7 +26,7 @@ class ParentPolicy
     public function update(User $user, ParentModel $parent): bool
     {
         return $user->isAdmin() || 
-               ($user->isParent() && $user->parent->id === $parent->id);
+               ($user->isParent() && $user->parentProfile->id === $parent->id);
     }
 
     public function delete(User $user, ParentModel $parent): bool
