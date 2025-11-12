@@ -40,7 +40,7 @@ class AttendanceController extends Controller
         return response()->json([
             'status' => 'success',
             'code' => 201,
-            'data' => new AttendanceSessionResource($session->load(['class', 'section', 'subject'])),
+            'data' => new AttendanceSessionResource($session->load(['classroom', 'section', 'subject'])),
             'errors' => []
         ], 201);
     }
