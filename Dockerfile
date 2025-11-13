@@ -49,6 +49,7 @@ COPY . .
 RUN composer install --no-dev --no-interaction --prefer-dist --no-progress --optimize-autoloader --no-scripts
 
 # Optimize Laravel (package discovery will occur at runtime when env is fully available)
+RUN rm -f bootstrap/cache/*.php
 RUN php artisan config:clear || true \
  && php artisan route:clear || true \
  && php artisan view:clear || true
