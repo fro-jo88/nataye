@@ -12,6 +12,10 @@ class AppServiceProvider extends ServiceProvider
         // Register services
         $this->app->singleton(\App\Services\IdentityResolver::class);
         $this->app->singleton(\App\Services\AuditLogger::class);
+
+        if ($this->app->environment('local', 'testing') && class_exists(\Laravel\Dusk\DuskServiceProvider::class)) {
+            $this->app->register(\Laravel\Dusk\DuskServiceProvider::class);
+        }
     }
 
     public function boot(): void
